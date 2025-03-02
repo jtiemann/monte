@@ -4,12 +4,10 @@ const lose = Symbol("lose")
 const wl = (sym) => sym == win ? "win" : "lose" 
 const guess = (num) => Math.floor(Math.random() * num)
 const initDoors = () => {
-  const rnd = () => { x = Math.random(); return function() { let jack =  x || Math.random(); return jack   }} 
-  rand = rnd()
-  door1 = rand() < (1/3) ? win : lose
-  door2 = rand() < (2/3) && rand() >= (1/3) ? win : lose
-  door3 = rand() < 1 && rand() >= (2/3) ? win : lose
-  return  [door1, door2, door3]
+  const doors = [lose, lose, lose];
+  const winningDoor = Math.floor(Math.random() * 3);
+  doors[winningDoor] = win;
+  return doors;
 }
 
 const play = () => {
